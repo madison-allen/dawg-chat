@@ -21,7 +21,7 @@ public class DawgchatApplication {
 
 	@GetMapping("/data")
 	public String getData(){
-		String url = System.getenv("INTERNAL_DB_URL");
+		String url = "jdbc:" + System.getenv("INTERNAL_DB_URL");
 		String user = System.getenv("DB_USER");
 		String password = System.getenv("DB_PASSWORD");
 
