@@ -5,6 +5,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 import java.sql.*;
+import static com.onrender.dawgchat.dawgchat.Constants.*;
 
 @SpringBootApplication
 @RestController
@@ -14,20 +15,17 @@ public class DawgchatApplication {
 		SpringApplication.run(DawgchatApplication.class, args);
 	}
 
-	@GetMapping("/")
+	//endpoint to check if the service is running
+	@GetMapping("/healthcheck")
 	public String healthcheck(){
 		return "200";
 	}
 
-	//example of how to query database
+	//example of how to query database using constants
 	@GetMapping("/data")
 	public String getData(){
-		String url = System.getenv("INTERNAL_DB_URL");
-		String user = System.getenv("DB_USER");
-		String password = System.getenv("DB_PASSWORD");
-
-		String output = "first name:";
-		try(Connection conn = DriverManager.getConnection(url, user, password);
+		String output = "";
+		try(Connection conn = DriverManager.getConnection(DB_URL, DB_USER, DB_PASSWORD);
 			Statement stmt = conn.createStatement();
 			ResultSet rs = stmt.executeQuery("SELECT * FROM students");) {
 			while (rs.next()) {
