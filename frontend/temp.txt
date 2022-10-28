@@ -1,0 +1,2 @@
+This file is only here so that the frontend directory can be listed in github.
+Once other files have been added to this directory, this file can be deleted.
