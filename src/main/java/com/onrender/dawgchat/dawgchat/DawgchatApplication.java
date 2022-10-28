@@ -19,9 +19,10 @@ public class DawgchatApplication {
 		return "200";
 	}
 
+	//example of how to query database
 	@GetMapping("/data")
 	public String getData(){
-		String url = "jdbc:" + System.getenv("INTERNAL_DB_URL");
+		String url = System.getenv("INTERNAL_DB_URL");
 		String user = System.getenv("DB_USER");
 		String password = System.getenv("DB_PASSWORD");
 
@@ -29,12 +30,11 @@ public class DawgchatApplication {
 		try(Connection conn = DriverManager.getConnection(url, user, password);
 			Statement stmt = conn.createStatement();
 			ResultSet rs = stmt.executeQuery("SELECT * FROM students");) {
-			output += "one";
 			while (rs.next()) {
 				output += rs.getString("first_name");
 			}
 		} catch (SQLException e) {
-			return e.getStackTrace().toString();
+			e.printStackTrace();
 		}
 		return output;
 	}
