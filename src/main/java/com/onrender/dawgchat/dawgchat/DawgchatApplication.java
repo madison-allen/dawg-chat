@@ -29,11 +29,12 @@ public class DawgchatApplication {
 		try(Connection conn = DriverManager.getConnection(url, user, password);
 			Statement stmt = conn.createStatement();
 			ResultSet rs = stmt.executeQuery("SELECT * FROM students");) {
+			output += "one";
 			while (rs.next()) {
 				output += rs.getString("first_name");
 			}
 		} catch (SQLException e) {
-			e.printStackTrace();
+			return e.getStackTrace().toString();
 		}
 		return output;
 	}
