@@ -12,7 +12,7 @@ function submitRequest(event) {
         password: form.get("password")
     }
 
-    const url = 'http://localhost:8090/signup';
+    const url = 'https://dawg-chat.onrender.com/signup';
     const response = fetch(url, {
         method: 'POST',
         body: JSON.stringify(user),

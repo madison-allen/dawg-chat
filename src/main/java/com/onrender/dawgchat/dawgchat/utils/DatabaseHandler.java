@@ -1,11 +1,10 @@
-package com.onrender.dawgchat.dawgchat;
+package com.onrender.dawgchat.dawgchat.utils;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
-import java.sql.Statement;
 
-import static com.onrender.dawgchat.dawgchat.Constants.*;
+import static com.onrender.dawgchat.dawgchat.utils.Constants.*;
 
 public class DatabaseHandler {
 
