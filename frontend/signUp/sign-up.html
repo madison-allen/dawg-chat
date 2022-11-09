@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Sign Up</title>
+    <link rel="stylesheet" href="sign-up.css">
+    <script src="sign-up.js" defer></script>
+</head>
+<body>
+    <div class="container">
+        <div class="header">Dawg Chat</div>
+
+        <div class="label">Sign Up</div>
+
+        <form method="POST" class="form" onsubmit="submitRequest(event)">
+            <input type="text" placeholder="Enter email" name="email" id="email" class="fullBox" required>
+            <input type="text" placeholder="SIU DAWG Tag" name="student_id" id="student_id" class="fullBox" required>
+            <input type="text" placeholder="First Name" name="first_name" id="first_name" class="halfBox" required>
+            <input type="text" placeholder="Last Name" name="last_name" id="last_name" class="halfBox" required>
+            <input type="password" placeholder="Create Password" name="password" id="password" class="fullBox" required>
+            <input type="submit" id="button" value="Create Account">
+        </form>
+
+        <div class="errorMessage"></div>
+        <br>
+
+        <!--TODO: Replace main-page.html with the login page once it has been created-->
+        <input type="button" id="button" onclick="location.href='main-page.html';" value="Login" />
+    </div>
+</body>
+</html>

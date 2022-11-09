@@ -1,4 +1,4 @@
-package com.onrender.dawgchat.dawgchat;
+package com.onrender.dawgchat.dawgchat.utils;
 
 public class Constants {
 
