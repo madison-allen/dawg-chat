@@ -14,6 +14,10 @@ import java.util.Map;
 @RestController
 public class SignUp {
 
+    public SignUp(){
+
+    }
+
     @PostMapping("/signup")
     public Map<HttpStatus, String> createUser(@RequestBody Map<String, String> credentials) throws SQLException {
         User user = new User(credentials);
@@ -45,7 +49,25 @@ public class SignUp {
     }
 
     public boolean validateEmail(String email){
-        return email.endsWith("@siu.edu");
+        if(!email.endsWith("@siu.edu")){
+            return false;
+        }
+        if(email.charAt(0) == '@'){
+            return false;
+        }
+
+        return true;
+    }
+
+    public boolean validateId(String id){
+        if(id.length() != 12){
+            return false;
+        }
+        if(!id.startsWith("siu85")){
+            return false;
+        }
+
+        return true;
     }
 
     /*
