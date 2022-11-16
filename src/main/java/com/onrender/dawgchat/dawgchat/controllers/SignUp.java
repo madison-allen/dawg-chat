@@ -16,6 +16,7 @@ public class SignUp {
 
     @PostMapping("/signup")
     public Map<HttpStatus, String> createUser(@RequestBody Map<String, String> credentials) throws SQLException {
+        //TODO Add error checking to make sure correct credentials are passed
         User user = new User(credentials);
         Statement statement = createStatement();
 

@@ -53,7 +53,7 @@ body {
     margin: 0 auto;
 }
 
-#button {
+.button {
     width: 150px;
     height: 40px;
     margin: 0 auto;
@@ -67,7 +67,7 @@ body {
     
 }
 
-#button:active{
+.button:active{
     background-color: #3e8e41;
     box-shadow: 0 5px #666;
     transform: translateY(2px);
