@@ -26,8 +26,7 @@ function submitRequest(event) {
         .then((response) => response.json())
         .then((data) => {
             if('OK' in data){
-                //Sends to a placeholder page if the post request was successful
-                //Will be replaced once actual page is made
+                //Sends to courses page with email as url parameter if successful
                 window.location.href = "../courses/courses.html?email=" + email;
             }
             else{
