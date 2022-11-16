@@ -18,6 +18,8 @@ public class Login {
     public Map<HttpStatus, String> validateLoginCredentials(@RequestBody Map<String, String> credentials) throws SQLException {
         Statement statement = DatabaseHandler.getConnection().createStatement();
 
+        //TODO Add error checking to make sure correct credentials are passed
+
         String getEncryptedPasswordQuery = "SELECT password FROM students WHERE email = '%s'";
         String formattedQuery = String.format(getEncryptedPasswordQuery,
                 credentials.get("email"));
