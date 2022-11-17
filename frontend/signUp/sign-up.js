@@ -4,11 +4,13 @@ function submitRequest(event) {
     event.preventDefault();
     const form = new FormData(event.target);
 
+    const email = form.get("email");
+
     let user = {
         student_id: form.get("student_id"),
         first_name: form.get("first_name"),
         last_name: form.get("last_name"),
-        email: form.get("email"),
+        email: email,
         password: form.get("password")
     }
 
@@ -24,9 +26,8 @@ function submitRequest(event) {
         .then((response) => response.json())
         .then((data) => {
             if('OK' in data){
-                //Sends to a placeholder page if the post request was successful
-                //Will be replaced once actual page is made
-                window.location.href = "main-page.html";
+                //Sends to courses page with email as url parameter if successful
+                window.location.href = "../courses/courses.html?email=" + email;
             }
             else{
                 //Displays error pertaining to why the request did not succeed
