@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Login</title>
+    <link rel="stylesheet" href="login.css">
+    <script src="login.js" defer></script>
+</head>
+
+<body>
+<div class="container">
+    <div class="header">Dawg Chat</div>
+
+    <div class="label">Login</div>
+
+    <form method="POST" class="form" onsubmit="validateUser(event)">
+        <input type="text" autocomplete="off" placeholder="Enter email" name="email" id="email" class="fullBox" required>
+        <input type="password" autocomplete="off" placeholder="Enter Password" name="password" id="password" class="fullBox" required>
+        <input type="submit" class="button" value="Log In">
+    </form>
+
+    <div class="errorMessage"></div>
+    <br>
+
+    <input type="button" class="button" onclick="location.href='../signUp/sign-up.html';" value="Sign Up" />
+</div>
+</body>
+
+</html>
