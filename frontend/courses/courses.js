@@ -162,6 +162,12 @@ function addCourse(event){
         });
 }
 
+/*
+ * Everytime an element is clicked in the offered courses list and
+ * when the page is loaded, this function runs. It removes the course
+ * from the offered courses list and adds it to the enrolled courses list
+ * with a messaging button next to it that redirects to the chat page.
+ */
 function createEnrolledListElement(course_number){
     const enrolledList = document.querySelector('.enrolledList');
     let listDiv = document.createElement("div");
@@ -184,6 +190,11 @@ function createEnrolledListElement(course_number){
     enrolledList.appendChild(listDiv);
 }
 
+/*
+ * Everytime an element is clicked in the enrolled courses list and
+ * when the page is loaded, this function runs. It removes the course
+ * from the enrolled courses list and adds it to the offered courses list.
+ */
 function createOfferredListElement(course_number){
     const offeredList = document.querySelector('.offeredList');
 
@@ -195,6 +206,10 @@ function createOfferredListElement(course_number){
     offeredList.appendChild(listElement);
 }
 
+/*
+ * The function that is called when the messaging button is clicked
+ * to redirect to the chat page.
+ */
 function openChatPage(){
     window.location.href = "../chat/chat.html?email=" + email;
 }
