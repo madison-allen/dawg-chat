@@ -52,7 +52,7 @@ function generateToken(){
     })
         .then((response) => response.json())
         .then((data) => {
-            token = data;
+            token = data.OK;
         })
         .catch((error) => {
             console.error('Error:', error);
