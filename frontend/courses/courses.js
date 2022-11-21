@@ -1,7 +1,19 @@
 let enrolledArray = [];
 let offeredArray = [];
+let email = getEmail();
 
 startup();
+
+/*
+ * Retrieves the email passed as a param in the url to send
+ * to the backend. There is definitely a better way of doing this
+ * but for now this is the work around I'm using.
+ */
+function getEmail(){
+    const queryString = window.location.search;
+    const urlParams = new URLSearchParams(queryString);
+    return urlParams.get('email');
+}
 
 /*
  * Ran in an async function to make getOfferedCourses wait for
@@ -14,17 +26,6 @@ async function startup(){
 }
 
 async function getEnrolledCourses() {
-
-    /*
-     * Retrieves the email passed as a param in the url to send
-     * to the backend. There is definitely a better way of doing this
-     * but for now this is the work around I'm using.
-     */
-    const enrolledList = document.querySelector('.enrolledList');
-    const queryString = window.location.search;
-    const urlParams = new URLSearchParams(queryString);
-    const email = urlParams.get('email');
-
     let emailMap = {
         email: email
     }
@@ -42,20 +43,12 @@ async function getEnrolledCourses() {
     //Creates a list of all enrolled courses
     const data = await response.json();
     data.forEach(function (item, index) {
-        let listElement = document.createElement("li");
-        listElement.setAttribute("id", item);
-        listElement.appendChild(document.createTextNode(item));
-        listElement.addEventListener('click', removeCourse);
-        enrolledList.appendChild(listElement);
+        createEnrolledListElement(item);
         enrolledArray.push(item);
     });
 }
 
 async function getOfferedCourses() {
-
-
-    const offeredList = document.querySelector('.offeredList');
-
     const url = 'https://dawg-chat.onrender.com/offeredCourses';
     const response = fetch(url, {
         method: 'GET',
@@ -69,11 +62,7 @@ async function getOfferedCourses() {
             //Creates a list of all offered courses
             data.forEach(function (item, index) {
                 if(!enrolledArray.includes(item)){
-                    let listElement = document.createElement("li");
-                    listElement.setAttribute("id", item);
-                    listElement.addEventListener('click', addCourse);
-                    listElement.appendChild(document.createTextNode(item));
-                    offeredList.appendChild(listElement);
+                    createOfferredListElement(item);
                 }
             });
         })
@@ -103,21 +92,7 @@ function removeCourse(event){
 
     offeredArray.push(course_number);
 
-    let listElement = document.createElement("li");
-    listElement.setAttribute("id", course_number);
-    listElement.addEventListener('click', addCourse);
-    listElement.appendChild(document.createTextNode(course_number));
-    const offeredList = document.querySelector('.offeredList');
-    offeredList.appendChild(listElement);
-
-    /*
-     * Retrieves the email passed as a param in the url to send
-     * to the backend. There is definitely a better way of doing this
-     * but for now this is the work around I'm using.
-     */
-    const queryString = window.location.search;
-    const urlParams = new URLSearchParams(queryString);
-    const email = urlParams.get('email');
+    createOfferredListElement(course_number);
 
     let credentials = {
         email: email,
@@ -143,7 +118,6 @@ function removeCourse(event){
 }
 
 function addCourse(event){
-
     const course_number = event.target.innerText;
 
     //Removes course from array of offered courses
@@ -163,21 +137,7 @@ function addCourse(event){
 
     enrolledArray.push(course_number);
 
-    let listElement = document.createElement("li");
-    listElement.setAttribute("id", course_number);
-    listElement.addEventListener('click', removeCourse);
-    listElement.appendChild(document.createTextNode(course_number));
-    const enrolledList = document.querySelector('.enrolledList');
-    enrolledList.appendChild(listElement);
-
-    /*
-     * Retrieves the email passed as a param in the url to send
-     * to the backend. There is definitely a better way of doing this
-     * but for now this is the work around I'm using.
-     */
-    const queryString = window.location.search;
-    const urlParams = new URLSearchParams(queryString);
-    const email = urlParams.get('email');
+    createEnrolledListElement(course_number);
 
     let credentials = {
         email: email,
@@ -200,4 +160,41 @@ function addCourse(event){
         .catch((error) => {
             console.error('Error:', error);
         });
+}
+
+function createEnrolledListElement(course_number){
+    const enrolledList = document.querySelector('.enrolledList');
+    let listDiv = document.createElement("div");
+    listDiv.setAttribute("class", "listDiv");
+    listDiv.setAttribute("id", course_number)
+
+    let listElement = document.createElement("li");
+    listElement.addEventListener('click', removeCourse);
+    listElement.appendChild(document.createTextNode(course_number));
+
+    let messageButton = document.createElement("img");
+    messageButton.setAttribute("class", "messageButton");
+    messageButton.setAttribute("src", "../assets/messagingLogo.png");
+    messageButton.addEventListener('click', () => {
+        window.location.href = "../chat/chat.html?email=" + email + "&course_number=" + course_number;
+    });
+
+    listDiv.appendChild(listElement);
+    listDiv.appendChild(messageButton);
+    enrolledList.appendChild(listDiv);
+}
+
+function createOfferredListElement(course_number){
+    const offeredList = document.querySelector('.offeredList');
+
+    let listElement = document.createElement("li");
+    listElement.setAttribute("id", course_number);
+    listElement.addEventListener('click', addCourse);
+    listElement.appendChild(document.createTextNode(course_number));
+
+    offeredList.appendChild(listElement);
+}
+
+function openChatPage(){
+    window.location.href = "../chat/chat.html?email=" + email;
 }

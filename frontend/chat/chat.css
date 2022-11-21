@@ -1,0 +1,41 @@
+body {
+    background-color: rgb(41, 41, 49);
+}
+
+.container {
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: auto;
+    width: 600px;
+    height: 650px;
+    border: 2px solid black;
+    background-color: darkgray;
+}
+
+.header {
+    font-size: 50px;
+    text-align: center;
+    background-color: maroon;
+    color: white;
+    padding: 20px;
+    margin-bottom: 10px;
+}
+
+.label {
+    font-size: 50px;
+    text-align: center;
+    padding-bottom: 20px;
+}
+
+.messageDisplay {
+    background-color: white;
+    height: 400px;
+    width: 500px;
+    margin: 0 auto;
+}
+
+.messageInput {
+    height: 25px;
+    width: 494px;
+    margin-left: 49.5px;
+}
