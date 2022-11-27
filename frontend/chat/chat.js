@@ -3,6 +3,22 @@ let email = getEmail();
 const apiToken = generateToken();
 setChatTitle();
 
+const textInput = document.querySelector('.messageInput');
+textInput.addEventListener('keypress', function (event) {
+    if (event.key === 'Enter') {
+        const message = document.createElement('div');
+        message.setAttribute("class", "message");
+        const sender = document.createElement('p');
+        const text = document.createElement('p');
+        sender.innerHTML = email;
+        text.innerHTML += event.target.value + "\n";
+        message.appendChild(sender);
+        message.appendChild(text);
+        document.querySelector('.messageDisplay').appendChild(message);
+        textInput.value = "";
+    }
+});
+
 /*
  * Takes the course number from the url because it is passed as
  * a parameter. It then adds the course number to the title of 
