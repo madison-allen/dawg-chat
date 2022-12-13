@@ -18,6 +18,9 @@ However, this is already done in ```Constants.java```.
 
 *NOTE: This will not work locally. To connect to the database locally, you will need to input the credentials manually.
 
+# Stream
+The name of the messagining API we are utilizing is Stream. [Here](https://getstream.io/chat/) is a link to the website. This branch containing our calls to the Stream API is still a work in progress. Therefore, testing of the messaging features will not work on our deployed version in render. Usage of this feature currenlty only works running this branch locally.
+
 # Backend
 The backend is under the "src" directory and uses Spring Boot. It is designed to create API endpoints the frontend can communicate with.
 This is mostly going to be storing and retrieving information from the database.
