@@ -144,6 +144,30 @@ public class Courses {
         return Map.of(HttpStatus.OK, "Course Removed");
     }
 
+    public boolean verifyCourseNumber(String id){
+        if(!id.startsWith("CS")){
+            return false;
+        }
+        if(id.length() != 5){
+            return false;
+        }
+        return true;
+    }
+
+    public boolean verifyNonEnrolledCourse(String course, List<String> courseList){
+        if(courseList.contains(course)){
+            return false;
+        }
+        return true;
+    }
+
+    public boolean verifyStudentInCourse(String id, List<String> ids){
+        if(!ids.contains(id)){
+            return false;
+        }
+        return true;
+    }
+
     private Statement createStatement() throws SQLException {
         return DatabaseHandler.getConnection().createStatement();
     }

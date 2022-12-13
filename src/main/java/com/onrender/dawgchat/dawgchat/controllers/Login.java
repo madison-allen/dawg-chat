@@ -46,4 +46,9 @@ public class Login {
 
         return Map.of(HttpStatus.OK, "Valid credentials");
     }
+
+    public boolean verifyPassword(String password, String encryptedPassword){
+
+        return PasswordManager.checkPassword(password, encryptedPassword);
+    }
 }

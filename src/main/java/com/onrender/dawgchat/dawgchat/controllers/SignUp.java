@@ -24,7 +24,7 @@ public class SignUp {
         if(!validateEmail(user.getEmail())){
             return Map.of(HttpStatus.BAD_REQUEST, "Invalid email address");
         }
-        if(user.getId().length() != 12){
+        if(!validateId(user.getId())){
             return Map.of(HttpStatus.BAD_REQUEST, "Invalid Dawg Tag");
         }
         if(isExistingUser(user, statement)){
@@ -46,7 +46,25 @@ public class SignUp {
     }
 
     public boolean validateEmail(String email){
-        return email.endsWith("@siu.edu");
+        if(!email.endsWith("@siu.edu")){
+            return false;
+        }
+        if(email.charAt(0) == '@'){
+            return false;
+        }
+
+        return true;
+    }
+
+    public boolean validateId(String id){
+        if(id.length() != 12){
+            return false;
+        }
+        if(!id.startsWith("siu85")){
+            return false;
+        }
+
+        return true;
     }
 
     /*
