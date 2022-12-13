@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Admin</title>
+    <link rel="stylesheet" href="admin.css">
+    <script src="admin.js" defer></script>
+</head>
+
+<body>
+    <div class="container">
+        <div class="header">Dawg Chat</div>
+
+        <div class="label">Modify Offered Courses</div>
+
+        <div class="input">
+            <input type="text" autocomplete="off" placeholder="Enter course number" id="courseNumber" required>
+            <input type="text" autocomplete="off" placeholder="Enter course name" id="courseName" required>
+        </div>
+
+        <div class="buttons">
+            <input type="button" class="button" onclick="createCourse()" value="Create Course">
+            <input type="button" class="button" onclick="removeCourse()" value="Remove Course">
+        </div>
+
+        <div class="successMessage"></div>
+        <div class="errorMessage"></div>
+    </div>
+</body>
+
+</html>

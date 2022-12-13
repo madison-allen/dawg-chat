@@ -8,8 +8,8 @@ function validateUser(event) {
         email: email,
         password: form.get("password")
     }
-
-    const url = 'https://dawg-chat.onrender.com/login';
+    
+    const url = 'http://localhost:8080/login';
     const response = fetch(url, {
         method: 'POST',
         body: JSON.stringify(login),
@@ -23,7 +23,12 @@ function validateUser(event) {
             if ('OK' in data) {
                 //Sends to a placeholder page if the post request was successful
                 //Will be replaced once actual page is made
-                window.location.href = "../courses/courses.html?email=" + email;
+                if(data.OK === "Admin User"){
+                    window.location.href = "../admin/admin.html";
+                }
+                else{
+                    window.location.href = "../courses/courses.html?email=" + email;
+                }
             }
             else {
                 //Displays error pertaining to why the request did not succeed

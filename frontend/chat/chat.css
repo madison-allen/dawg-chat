@@ -2,6 +2,23 @@ body {
     background-color: rgb(41, 41, 49);
 }
 
+p {
+    white-space: pre;
+    margin: 0;
+    padding: 0;
+    line-height: normal;
+}
+
+.sender {
+    background-color: rgb(95, 99, 122);
+    color: white;
+}
+
+.text {
+    background-color: antiquewhite;
+    margin-bottom: 10px;
+}
+
 .container {
     margin-left: auto;
     margin-right: auto;

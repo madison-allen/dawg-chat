@@ -40,6 +40,10 @@ public class Login {
             return Map.of(HttpStatus.BAD_REQUEST, "Invalid password");
         }
 
+        if(credentials.get("email").equals("admin@siu.edu")){
+            return Map.of(HttpStatus.OK, "Admin User");
+        }
+
         return Map.of(HttpStatus.OK, "Valid credentials");
     }
 }

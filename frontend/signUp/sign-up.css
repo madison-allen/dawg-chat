@@ -74,7 +74,7 @@ body {
 }
 
 .errorMessage {
-    color: red;
+    color: rgb(145, 26, 26);
     font-weight: bold;
     width: 400px;
     text-align: center;
